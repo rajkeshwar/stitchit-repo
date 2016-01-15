@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.min.css" />
+    
+    <script src="https://code.angularjs.org/1.3.15/angular.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <data-owl-carousel class="owl-carousel" data-options="{navigation: true, pagination: false, rewindNav : false}">
+      <div owl-carousel-item="" ng-repeat="item in ::items1" class="item">
+        <p>{{::item}}</p>
+      </div>
+    </data-owl-carousel>
+    <data-owl-carousel class="owl-carousel" data-options="{navigation: false, pagination: true, rewindNav : false}">
+      <div owl-carousel-item="" ng-repeat="item in ::items2" class="item">
+        <p>{{::item}}</p>
+      </div>
+    </data-owl-carousel>
+
+    <script type="text/javascript">
+      var app = angular.module('plunker', []);
+
+        app.controller('MainCtrl', function($scope) {
+          $scope.items1 = [1,2,3,4,5];
+          $scope.items2 = [1,2,3,4,5,6,7,8,9,10];
+        }).directive("owlCarousel", function() {
+          return {
+            restrict: 'E',
+            transclude: false,
+            link: function (scope) {
+              scope.initCarousel = function(element) {
+                // provide any default options you want
+                var defaultOptions = {
+                };
+                var customOptions = scope.$eval($(element).attr('data-options'));
+                // combine the two options objects
+                for(var key in customOptions) {
+                  defaultOptions[key] = customOptions[key];
+                }
+                // init carousel
+                $(element).owlCarousel(defaultOptions);
+              };
+            }
+          };
+        })
+        .directive('owlCarouselItem', [function() {
+          return {
+            restrict: 'A',
+            transclude: false,
+            link: function(scope, element) {
+              // wait for the last item in the ng-repeat then call init
+              if(scope.$last) {
+                scope.initCarousel(element.parent());
+              }
+            }
+          };
+        }]);
+    </script>
+  </body>
+
+</html>

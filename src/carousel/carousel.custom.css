@@ -1,0 +1,8 @@
+[data-owl-carousel] .item{
+  margin: 3px;
+}
+[data-owl-carousel] .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}

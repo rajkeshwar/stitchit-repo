@@ -1,0 +1,69 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Patiala Salwar <!-- <span class="badge">16</span> --></h1>
+  <small class="text-muted">Customized style</small>
+</div>
+<div class="wrapper-md">
+  <div class="row">
+    <div class="col-lg-8"> 
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold">Measurements</div>                  
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-6"><strong>Item name</strong></div>
+            <div class="col-lg-6"><b>:</b> {{cnf.itemName}}</div>
+            <div class="col-lg-6"><strong>Description</strong></div>
+            <div class="col-lg-6"><b>:</b> {{cnf.itemDescription}}</div>
+            <div class="col-lg-6"><strong>Item Id</strong></div>
+            <div class="col-lg-6"><b>:</b> {{cnf.itemId}}</div> 
+            <br/>
+            <div ng-repeat="item in cnf.measures">
+              <div class="col-lg-6"><strong>{{item.key}}</strong></div>
+              <div class="col-lg-6"><b>:</b> {{item.value}} inches</div>
+            </div>
+          </div>
+            <!-- <pre>{{cnf | json}}</pre>  -->    
+        </div>         
+      </div>
+
+      <!-- item images start -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img ng-src="ext-imgs/fneck/1.jpg"/>
+          <label>Front Neck</label>
+        </div>
+        <div class="col-lg-4">
+          <img ng-src="ext-imgs/bneck/1.jpg"/>
+          <label>Back Neck</label>
+        </div>
+        <div class="col-lg-4">
+          <img ng-src="ext-imgs/sleeve/1 (3).jpg"/>
+          <label>Sleeve Style</label>
+        </div>
+      </div>
+      <h1></h1>
+      <!-- /sleeve-style-selection -->
+      <div class="btn-group btn-group-justified">
+        <label class="btn btn-primary" ng-click="addToCart()">Add to Cart</label>
+        <label class="btn btn-default" ng-click="backToCustomize()">Customize</label>            
+      </div> 
+      <br/>
+      <!-- proceed to next button -->      
+    </div>
+    <div class="col-lg-4">
+      <!-- progressbar -->
+      <div ng-controller="ProgressDemoCtrl" class="panel panel-default">
+        <div class="panel-heading">
+          <ul class="nav nav-pills pull-right">
+            <li><a href ng-click="random()">Random</a></li>
+            <li><a href ng-click="randomStacked()">Stack</a></li>
+          </ul>
+          Progressbar
+        </div>
+        <div class="list-group">
+          
+        </div>
+      </div>
+      <!-- / progressbar -->
+    </div>
+  </div>
+</div>

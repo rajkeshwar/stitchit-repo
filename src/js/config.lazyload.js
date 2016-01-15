@@ -22,7 +22,7 @@ angular.module('app')
       nestable:       [   '../shared-jslibs/nestable/jquery.nestable.js',
                           '../shared-jslibs/nestable/jquery.nestable.css'],
       filestyle:      [   '../shared-jslibs/bootstrap-filestyle/src/bootstrap-filestyle.js'],
-      slider:         [   '../shared-jslibs/bootstrap-slider/bootstrap-slider.js',
+      slider:         [   'js/app/ui/slider/stc-slider.js',
                           '../shared-jslibs/bootstrap-slider/bootstrap-slider.css'],
       chosen:         [   '../shared-jslibs/chosen/chosen.jquery.js',
                           '../shared-jslibs/bootstrap-chosen/bootstrap-chosen.css'],

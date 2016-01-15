@@ -10,8 +10,8 @@ module.exports = {
     generateRobotstxt: false,
     build: true,
     app: {
-      name: 'Angulr',
-      version: '2.0.1',
+      name: 'StitchIt',
+      version: '0.0.1',
       color: {
         primary: '#7266ba',
         info:    '#23b7e5',

@@ -1,0 +1,107 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">{{itemName}} <span class="badge">16</span></h1>
+  <small class="text-muted">Mesure your cloth</small>
+</div>
+<div class="wrapper-md">
+  <div class="row">
+    <div class="col-lg-8"> 
+
+      <ui-select ng-model="size.selected" on-select="selectItemSize($item)" theme="bootstrap">
+        <ui-select-match placeholder="Select or search size">{{$select.selected.label}}</ui-select-match>
+        <ui-select-choices repeat="item in msr.sizes | filter: $select.search">
+          <div ng-bind-html="item.label | highlight: $select.search"></div>
+          <small ng-bind-html="item.desc | highlight: $select.search"></small>
+        </ui-select-choices>
+      </ui-select> 
+
+      <br/>
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold">Measurements</div>                  
+        <div class="panel-body">
+          <form role="form" ng-model="stcform">  
+            <div class="form-group" data-ng-repeat="sizeItem in msr.measurements" stc-slider-each>  
+              <label>{{sizeItem.key}}</label>
+              <button uib-popover-template="'measure-template.html'" style="margin-right:25%;"
+                      popover-trigger="focus" class="badge pull-right"   
+                      popover-placement="bottom">How to measure?</button>    
+
+              <script type="text/ng-template" id="measure-template.html">             
+                <div class="panel">
+                  <div class="panel-heading no-border bg-primary">          
+                    <span class="text-lt" style="color:black;">{{sizeItem.key}}</span> 
+                  </div>
+                  <div class="item m-l-n-xxs m-r-n-xxs no-margin">                     
+                    <div class="bottom wrapper bg-gd-dk text-white">     
+                      <strong>How to measure</strong>
+                      <div>Place the tape well under the arm, straight across the back and measure this from just under the bust and just above the waist</div>
+                    </div>
+                    <img ng-src="ext-imgs/how/{{sizeItem.msrImg}}" class="img-full"/> 
+                  </div>
+                </div>                
+              </script>
+              <br/>
+              <div stc-slider ng-model="sizeItem.size">
+                <input class="stc-slider-slr" type="range" min=10 max=100 step=1>
+                <input type="number" class="form-control stc-slider-val">
+              </div>          
+            </div>
+          </form>          
+        </div>         
+      </div>
+
+      <!-- front-neck-selection -->
+      <div class="panel b-a" ng-repeat="slide in msr.imgSliders">
+        <div class="panel-heading no-border bg-info">{{slide.label}}</div>
+        <owl-carousel data-options="{autoPlay: 3000, items: 5, itemsDesktop:[1199,3], itemsDesktopSmall:[979,3], responsiveClass:true, pagination:false, responsive:{0:{'items':2},480:{'items':3},768:{'items':5}}}">  
+
+          <div owl-carousel-item="" ng-repeat="sl in slide.slides"> 
+            <div class="item mr">
+              <img ng-click="chooseStyle(sl, slide)" ng-src="{{sl.imgSrc}}"/>
+            </div>
+          </div>
+        </owl-carousel>   
+      </div>
+      <!-- /front-neck-selection -->
+      <div class="btn-group btn-group-justified">
+        <label class="btn btn-primary" ng-click="proceedToNext()">Proceed to next</label>
+        <!-- <label class="btn btn-default">Customize</label> -->            
+      </div> 
+      <br/>
+      <!-- proceed to next button -->
+      
+    </div>
+    <div class="col-lg-4">
+      <!-- progressbar -->
+      <div ng-controller="ProgressDemoCtrl" class="panel panel-default">
+        <div class="panel-heading">
+          <ul class="nav nav-pills pull-right">
+            <li><a href ng-click="random()">Random</a></li>
+            <li><a href ng-click="randomStacked()">Stack</a></li>
+          </ul>
+          Progressbar
+        </div>
+        <div class="list-group">
+          <div class="list-group-item">
+            <progressbar value="35" class="progress-xxs m-t-sm"></progressbar>
+            <progressbar value="55" class="progress-xs" type="info"></progressbar>
+            <progressbar class="progress-striped progress-xs" value="22" type="success">22%</progressbar>
+            <progressbar class="progress-striped active progress-xs m-b-sm" max="200" value="90" type="warning"><i>90 / 200</i></progressbar>
+          </div>
+          <div class="list-group-item">
+            <progressbar max="max" value="dynamic" type="info" class="progress-sm m-t-sm"><span style="white-space:nowrap;">{{dynamic}} / {{max}}</span></progressbar>            
+            <progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></progressbar>
+            <progressbar class="progress-striped active m-b-sm" value="dynamic" type="{{type}}">{{type}} <i ng-show="showWarning">!!! Watch out !!!</i></progressbar>
+          </div>
+          <div class="list-group-item">
+            <progress class="m-t-sm m-b-sm">
+              <bar ng-repeat="bar in stacked track by $index" value="bar.value" type="{{bar.type}}">
+                <span ng-hide="bar.value < 5">{{bar.value}}%</span>
+              </bar>
+            </progress>
+          </div>
+        </div>
+      </div>
+      <!-- / progressbar -->      
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.item.mr.active-item {
+	border: 3px solid red;
+	margin: 0;
+}
+.item.mr {
+	margin: 3px;
+}
+.panel-heading.bg-primary {
+	background-color: #7266ba;
+}
+.no-margin {
+	margin: 0;
+}
+.popover-content {
+  padding: 0;
+}
+.popover-content .panel {
+	margin-bottom: 0;
+}
+button.badge {
+	border: none;
+	margin-left: 8%;
+}
+
+/*stc-slider styles*/
+ input[type="range"].stc-slider-slr {
+	width:80%;
+	display:inline-block;
+}
+.stc-slider-val {
+	width: 18%;
+	display: inline-block;
+	padding: 6px;
+	float: right;
+}

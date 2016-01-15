@@ -1,12 +1,14 @@
 
 var gulp = require('gulp');
 var clean = require('gulp-clean');
+var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var gulpFilter = require('gulp-filter');
 
 var browserSync = require('browser-sync').create();
 var less        = require('gulp-less');
 var concatCss   = require('gulp-concat-css');
+var mainBowerFiles = require('gulp-main-bower-files');
 
 var bowerFiles = require('./gulp/bower-files.js');
 
@@ -15,7 +17,7 @@ gulp.task('libs', function(){
     return gulp.src('./bower.json')
         .pipe(mainBowerFiles(bowerFiles.overrides))
         .pipe(jsFilter)
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(jsFilter.restore)
         .pipe(gulp.dest('./shared-jslibs'));
 });
@@ -41,6 +43,7 @@ gulp.task('serve', ['less'], function() {
 
     gulp.watch("src/css/less/*.less", ['less']);
     gulp.watch("src/*.html").on('change', browserSync.reload);
+    gulp.watch("src/**/*.html").on('change', browserSync.reload);
 });
 
 // Compile sass into CSS & auto-inject into browsers
@@ -61,5 +64,11 @@ gulp.task('bootstrap', ['copyfonts'], function() {
 gulp.task('copyfonts', function() {
    gulp.src('src/css/bootstrap/fonts/*.{eot,svg,ttf,woff,woff2}')
    .pipe(gulp.dest('./src/fonts'));
+});
+
+gulp.task('appjs', function() {
+  return gulp.src(['./src/js/**/*.js', './src/js/*.js'])
+    .pipe(concat('app.all.js'))
+    .pipe(gulp.dest('./src/js/'));
 });
 //gulp.task('default', ['serve']);

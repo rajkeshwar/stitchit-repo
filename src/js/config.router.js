@@ -4,25 +4,24 @@
  * Config for the router
  */
 angular.module('app')
-  .run(
-    [          '$rootScope', '$state', '$stateParams',
-      function ($rootScope,   $state,   $stateParams) {
+  .run([      '$rootScope', '$state', '$stateParams',
+      function($rootScope,   $state,   $stateParams) {
           $rootScope.$state = $state;
           $rootScope.$stateParams = $stateParams;        
       }
     ]
   )
-  .config(
-    [          '$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 
-      function ($stateProvider,   $urlRouterProvider, JQ_CONFIG) {
+  .config([  '$stateProvider', '$urlRouterProvider','JQ_CONFIG', 
+    function ($stateProvider,   $urlRouterProvider,  JQ_CONFIG) {
           
           $urlRouterProvider
               .otherwise('/app/dashboard-v1');
+
           $stateProvider
               .state('app', {
                   abstract: true,
                   url: '/app',
-                  templateUrl: 'tpl/app.html'
+                  templateUrl: 'js/app/app.html'
               })
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',
