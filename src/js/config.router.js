@@ -15,7 +15,7 @@ angular.module('app')
     function ($stateProvider,   $urlRouterProvider,  JQ_CONFIG) {
           
           $urlRouterProvider
-              .otherwise('/app/dashboard-v1');
+              .otherwise('/app/index');
 
           $stateProvider
               .state('app', {

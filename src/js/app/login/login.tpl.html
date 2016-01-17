@@ -1,0 +1,105 @@
+<div class="row login-modal" ng-controller="LoginModalCtrl">
+  <div data-ng-click="modalOptions.close()" class="modal-close"></div>
+  <div class="col-md-7">
+    <!-- login to stitchit app -->
+    <div class="m-b-lg" ng-show="userHasAccount && !forgotYourPassword">      
+      <div class="wrapper">    
+        <h3>Signin with your stitchit account</h3>
+        <strong>Welcome back! Enter your password to login!</strong>
+      </div>
+      <form name="form" class="form-validation"> 
+        <!-- <div class="text-danger wrapper text-center" ng-show="authError">
+          {{authError}}
+        </div> -->
+        <div class="list-group list-group-sm"> 
+          <div class="list-group-item">
+            <input type="email" placeholder="Email" class="form-control no-border" ng-model="user.email" required>
+          </div>
+          <div class="list-group-item">   
+             <input type="password" placeholder="Password" class="form-control no-border" ng-model="user.password" required> 
+          </div>
+        </div>
+        <div class="text-center f-password m-t m-b"> 
+          <a ng-click="forgotPassowrd(true)" class="login">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="modalOptions.ok()">Log in</button>
+        
+        <div class="line line-dashed"></div>
+        <strong>Don't have a stitchit account? </strong>
+        <a class="login" ng-click="createAccount()">Create one</a>
+      </form>
+    </div>
+    <!-- /login to stitchit app -->
+    <!-- Create an account -->
+    <div class="m-b-lg" ng-show="!userHasAccount && !forgotYourPassword">      
+      <div class="wrapper">    
+        <h3>Create a stitchit account</h3>
+        <strong>Enter your details and we will create a freecharge account for you</strong>
+      </div>
+      <form name="form" class="form-validation">
+        <div class="list-group list-group-sm"> 
+          <div class="list-group-item">
+            <input type="email" placeholder="Enter your email" class="form-control no-border" ng-model="user.email" required>
+          </div>
+          <div class="list-group-item"> 
+            <input type="text" placeholder="Your name" class="form-control no-border" ng-model="user.name" required>
+          </div>
+          <div class="list-group-item">
+            <input type="text" placeholder="Mobile Number" class="form-control no-border" ng-model="user.mobile" required> 
+          </div>
+          <div class="list-group-item">
+             <input type="password" placeholder="Password" class="form-control no-border" ng-model="user.password" required>
+          </div>
+        </div>
+        <div class="text-center f-password m-t m-b">  
+          <a ng-click="forgotPassowrd(true)" class="login">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="modalOptions.ok()">Log in</button>
+        
+        <div class="line line-dashed"></div>
+        <strong>Already have a stitchit account? </strong>
+        <a class="login" ng-click="loginAccount()">Login</a>
+      </form>
+    </div>
+    <!-- /Create an account -->
+    <!-- forgot your password -->
+    <div class="m-b-lg" ng-show="forgotYourPassword">      
+      <div class="wrapper">    
+        <h3>Create a stitchit account</h3>
+        <strong>Enter your details and we will create a stitchit account for you</strong>
+      </div>
+
+      <form name="form" class="form-validation">
+        <div class="list-group list-group-sm">
+          <div class="list-group-item">
+            <input type="email" placeholder="Enter your email" class="form-control no-border" ng-model="user.email" required> 
+          </div>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="forgotPassowrd(false)" ng-disabled='form.$invalid'>Send Confirmation Code</button>
+        
+        <div class="line line-dashed"></div>
+        <strong>Already have a stitchit account? </strong>
+        <a class="login" ng-click="loginAccount()">Login</a><br/>
+        <strong>Don't have a stitchit account? </strong>
+        <a class="login" ng-click="createAccount()">Create one</a>
+      </form>
+    </div>
+    <!-- /forgot your password -->
+  </div>
+  <div class="col-sm-5">
+    <div class="m-b-lg social">
+      <button class="btn btn-rounded btn-lg btn-info btn-block">
+        <i class="fa fa-fw fa-twitter"></i> Twitter
+      </button>
+      <button class="btn btn-rounded btn-lg btn-info btn-block">
+        <i class="fa fa-fw fa-facebook"></i> Twitter 
+      </button> 
+      <button class="btn btn-rounded btn-lg btn-danger btn-block">
+        <i class="fa fa-fw fa-google-plus"></i> Google+     
+      </button>
+    </div>
+    <!-- <div data-ng-click="modalOptions.close()" class="modal-close"></div> -->
+  </div>
+</div>
+

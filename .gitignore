@@ -5,3 +5,5 @@ bower_components/
 angular/
 shared-jslibs/
 stitchit/
+
+**/ext-imgs/**

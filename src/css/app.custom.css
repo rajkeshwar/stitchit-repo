@@ -8,6 +8,9 @@
 .panel-heading.bg-primary {
 	background-color: #7266ba;
 }
+.panel-heading.slide {
+	padding: 5px 15px;
+}
 .no-margin {
 	margin: 0;
 }
@@ -19,7 +22,7 @@
 }
 button.badge {
 	border: none;
-	margin-left: 8%;
+	margin-right: 5px;
 }
 
 /*stc-slider styles*/
@@ -32,4 +35,115 @@ button.badge {
 	display: inline-block;
 	padding: 6px;
 	float: right;
+}
+
+/*Modal custom css*/
+.modal-header h3 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.modal-header button.close {
+	margin-top: 9px;
+}
+
+.row.login-modal{
+	margin-left: 0;
+	margin-right: 0
+}
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  background: url(img/modal-close.png) center center no-repeat;
+  cursor: pointer;
+  z-index: 1000;
+}
+.login-modal .wrapper{
+	margin-top: 20px;
+}
+.login-modal .list-group {
+	margin-bottom: 0;
+}
+.login-modal .f-password {
+	margin-bottom: 15px;
+	float: right;
+}
+.login-modal .f-password.m-t {
+	margin-top: 5px;
+}
+.login-modal .f-password.m-b {
+	margin-top: 5px;
+}
+a.login {
+	cursor: pointer;
+  color: #65c6bb;
+}
+.line-dashed {
+  border-style: dashed !important;
+  background-color: #eee;
+  border-width: 0;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 980px) /* Desktop */ {
+  .modal-login {
+	  width: 800px;
+	  background-color: cyan;
+	}
+	.wrapper-md.index {
+    padding: 10px;
+	}
+	.social {
+		margin:100px 20px 0;
+	}
+}
+
+@media screen and (max-width: 979px) /* Tablet */ {
+  .modal-login {
+	  width: 100%;
+	  background-color: yellow;
+	}
+	.wrapper-md.index {
+    padding: 10px;
+	}
+}
+
+@media screen and (max-width: 500px) /* Mobile */ {
+  .modal-login {
+	  width: 95%;
+	}
+	.wrapper-md.index {
+    padding: 0;
+	}
+	.social {
+		margin-top:0;
+	}
+}
+
+.img-c {
+	text-align: center;
+}
+.img-p .panel-heading {
+	padding: 6px 15px;
+	margin: -1px -1px 6px -1px;
+}
+
+.shipping-c.panel-body {
+	width: 90%;
+}
+.shipping-c .form-group [class*="col-"] {
+	padding-right: 0;
+}
+.line-dashed.m-t {
+	margin-top: 0;
+}
+
+.inr:after {
+    content: '&#x20B9';
+}
+.panel.owl-c {
+	margin-left: 1px;
+	margin-right: 1px;
 }

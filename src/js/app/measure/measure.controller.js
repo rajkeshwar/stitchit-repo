@@ -15,30 +15,10 @@ app.controller('MeasureCtrl',
 		$scope.msr = resp.data;
 	});
 
-  // $scope.fnecks = [1,2,3,4,5,6,7,8];
-  // $scope.bnecks = [1,2,3,4,5,6,7,8,9,10,11,12];
-  // $scope.sleeves = [1,2,3,4,5,6,7,8,9,10];
-
-  // $scope.sfrontNeck = "Front Neck Style";
-  // $scope.sbackNeck = "Back Neck Style";
-  // $scope.sslveStyle = "Sleeve Style";
-
   $scope.chooseStyle = function( item, slide ){
     console.log('Item choosed ', item);
     slide.label = item.label;
   };
-
-  // $scope.frontNeck = function(item){
-  //   $scope.sfrontNeck = item;
-  // };
-
-  // $scope.backNeck = function(item){
-  //   $scope.sbackNeck = item;
-  // };
-
-  // $scope.sleeveStyle = function(item){
-  //   $scope.sslveStyle = item;
-  // };
 
   var itemSelected = {};
   $scope.selectItemSize = function(item){
@@ -49,11 +29,19 @@ app.controller('MeasureCtrl',
     }
     $scope.msr.measurements = measures;
     itemSelected['size']  = item;
+
+    setTimeout(function(){
+      $(document).trigger('click');
+    }, 1000);
+    
   };
 
   // defalut selected for select
   $scope.size = {
-    selected: {id:"small"}
+    selected: {
+      id:"small",
+      label:"Please select a size"
+    }
   };
 
   $scope.proceedToNext = function(){

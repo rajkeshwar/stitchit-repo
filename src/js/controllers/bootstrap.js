@@ -58,21 +58,65 @@
     };
   }])
   ; 
-  app.controller('CarouselDemoCtrl', ['$scope', function($scope) {
-    $scope.myInterval = 5000;
+ 
+  app.controller('CarouselDemoCtrl', ['$scope', function ($scope) {
+    $scope.myInterval = 2000;
+    $scope.noWrapSlides = false;
     var slides = $scope.slides = [];
+    var currIndex = 0;
+
     $scope.addSlide = function() {
+      var newWidth = 600 + slides.length + 1;
       slides.push({
-        image: 'img/c' + slides.length + '.jpg',
-        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
+        image: '//lorempixel.com/' + newWidth + '/300',
+        text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+        id: currIndex++
       });
     };
-    for (var i=0; i<4; i++) {
+
+    $scope.randomize = function() {
+      var indexes = generateIndexesArray();
+      assignNewIndexesToSlides(indexes);
+    };
+
+    for (var i = 0; i < 4; i++) {
       $scope.addSlide();
     }
-  }])
-  ; 
-  app.controller('DropdownDemoCtrl', ['$scope', function($scope) {
+
+    // Randomize logic below
+
+    function assignNewIndexesToSlides(indexes) {
+      for (var i = 0, l = slides.length; i < l; i++) {
+        slides[i].id = indexes.pop();
+      }
+    }
+
+    function generateIndexesArray() {
+      var indexes = [];
+      for (var i = 0; i < currIndex; ++i) {
+        indexes[i] = i;
+      }
+      return shuffle(indexes);
+    }
+
+    // http://stackoverflow.com/questions/962802#962890
+    function shuffle(array) {
+      var tmp, current, top = array.length;
+
+      if (top) {
+        while (--top) {
+          current = Math.floor(Math.random() * (top + 1));
+          tmp = array[current];
+          array[current] = array[top];
+          array[top] = tmp;
+        }
+      }
+
+      return array;
+    }
+  }]);
+
+  app.controller('DropdownDemoCtrl', function ($scope, $log) {
     $scope.items = [
       'The first choice!',
       'And another choice for you.',
@@ -84,7 +128,7 @@
     };
 
     $scope.toggled = function(open) {
-      //console.log('Dropdown is now: ', open);
+      $log.log('Dropdown is now: ', open);
     };
 
     $scope.toggleDropdown = function($event) {
@@ -92,27 +136,36 @@
       $event.stopPropagation();
       $scope.status.isopen = !$scope.status.isopen;
     };
-  }])
-  ; 
-  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+
+    $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+  });
+
+  app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+
     $scope.items = items;
     $scope.selected = {
       item: $scope.items[0]
     };
 
     $scope.ok = function () {
-      $modalInstance.close($scope.selected.item);
+      $uibModalInstance.close($scope.selected.item);
     };
 
     $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     };
-  }])
-  ; 
-  app.controller('ModalDemoCtrl', ['$scope', '$modal', '$log', function($scope, $modal, $log) {
+  });
+
+  app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
+
     $scope.items = ['item1', 'item2', 'item3'];
+
+    $scope.animationsEnabled = true;
+
     $scope.open = function (size) {
-      var modalInstance = $modal.open({
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
         templateUrl: 'myModalContent.html',
         controller: 'ModalInstanceCtrl',
         size: size,
@@ -129,9 +182,14 @@
         $log.info('Modal dismissed at: ' + new Date());
       });
     };
-  }])
-  ; 
-  app.controller('PaginationDemoCtrl', ['$scope', '$log', function($scope, $log) {
+
+    $scope.toggleAnimation = function () {
+      $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+
+  });
+
+  app.controller('PaginationDemoCtrl', function ($scope, $log) {
     $scope.totalItems = 64;
     $scope.currentPage = 4;
 
@@ -140,24 +198,48 @@
     };
 
     $scope.pageChanged = function() {
-      $log.info('Page changed to: ' + $scope.currentPage);
+      $log.log('Page changed to: ' + $scope.currentPage);
     };
 
     $scope.maxSize = 5;
     $scope.bigTotalItems = 175;
     $scope.bigCurrentPage = 1;
-  }])
-  ; 
-  app.controller('PopoverDemoCtrl', ['$scope', function($scope) {
-    $scope.dynamicPopover = 'Hello, World!';
-    $scope.dynamicPopoverTitle = 'Title';
-  }])
-  ; 
-  app.controller('ProgressDemoCtrl', ['$scope', function($scope) {
+  });
+
+  app.controller('PopoverDemoCtrl', function ($scope) {
+    $scope.dynamicPopover = {
+      content: 'Hello, World!',
+      templateUrl: 'myPopoverTemplate.html',
+      title: 'Title'
+    };
+
+    $scope.dynamicPopoverText = "Dynamic text";
+    $scope.dynamicPopoverTitle = "Dynamic title";
+
+    $scope.placement = {
+      options: [
+        'top',
+        'top-left',
+        'top-right',
+        'bottom',
+        'bottom-left',
+        'bottom-right',
+        'left',
+        'left-top',
+        'left-bottom',
+        'right',
+        'right-top',
+        'right-bottom'
+      ],
+      selected: 'top'
+    };
+  });
+
+  app.controller('ProgressDemoCtrl', function ($scope) {
     $scope.max = 200;
 
     $scope.random = function() {
-      var value = Math.floor((Math.random() * 100) + 1);
+      var value = Math.floor(Math.random() * 100 + 1);
       var type;
 
       if (value < 25) {
@@ -170,35 +252,53 @@
         type = 'danger';
       }
 
-      $scope.showWarning = (type === 'danger' || type === 'warning');
+      $scope.showWarning = type === 'danger' || type === 'warning';
 
       $scope.dynamic = value;
       $scope.type = type;
     };
+
     $scope.random();
 
     $scope.randomStacked = function() {
       $scope.stacked = [];
       var types = ['success', 'info', 'warning', 'danger'];
 
-      for (var i = 0, n = Math.floor((Math.random() * 4) + 1); i < n; i++) {
-          var index = Math.floor((Math.random() * 4));
+      for (var i = 0, n = Math.floor(Math.random() * 4 + 1); i < n; i++) {
+          var index = Math.floor(Math.random() * 4);
           $scope.stacked.push({
-            value: Math.floor((Math.random() * 30) + 1),
+            value: Math.floor(Math.random() * 30 + 1),
             type: types[index]
           });
       }
     };
+
     $scope.randomStacked();
-  }])
-  ; 
-  app.controller('TabsDemoCtrl', ['$scope', function($scope) {
+  });
+
+  // app.controller('TabsDemoCtrl', ['$scope', function($scope) {
+  //   $scope.tabs = [
+  //     { title:'Dynamic Title 1', content:'Dynamic content 1' },
+  //     { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
+  //   ];
+  // }])
+  // ; 
+  app.controller('TabsDemoCtrl', function ($scope, $window) {
     $scope.tabs = [
       { title:'Dynamic Title 1', content:'Dynamic content 1' },
       { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
     ];
-  }])
-  ; 
+
+    $scope.alertMe = function() {
+      setTimeout(function() {
+        $window.alert('You\'ve selected the alert tab!');
+      });
+    };
+
+    $scope.model = {
+      name: 'Tabs'
+    };
+  });
   app.controller('RatingDemoCtrl', ['$scope', function($scope) {
     $scope.rate = 7;
     $scope.max = 10;
@@ -210,12 +310,29 @@
     };
   }])
   ; 
-  app.controller('TooltipDemoCtrl', ['$scope', function($scope) {
+  
+  app.controller('TooltipDemoCtrl', function ($scope, $sce) {
     $scope.dynamicTooltip = 'Hello, World!';
     $scope.dynamicTooltipText = 'dynamic';
-    $scope.htmlTooltip = 'I\'ve been made <b>bold</b>!';
-  }])
-  ; 
+    $scope.htmlTooltip = $sce.trustAsHtml('I\'ve been made <b>bold</b>!');
+    $scope.placement = {
+      options: [
+        'top',
+        'top-left',
+        'top-right',
+        'bottom',
+        'bottom-left',
+        'bottom-right',
+        'left',
+        'left-top',
+        'left-bottom',
+        'right',
+        'right-top',
+        'right-bottom'
+      ],
+      selected: 'top'
+    };
+  });
   app.controller('TypeaheadDemoCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.selected = undefined;
     $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
@@ -236,44 +353,127 @@
     };
   }])
   ; 
-  app.controller('DatepickerDemoCtrl', ['$scope', function($scope) {
+  app.controller('DatepickerDemoCtrl', function ($scope) {
     $scope.today = function() {
       $scope.dt = new Date();
     };
     $scope.today();
 
-    $scope.clear = function () {
+    $scope.clear = function() {
       $scope.dt = null;
     };
 
     // Disable weekend selection
     $scope.disabled = function(date, mode) {
-      return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+      return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
     };
 
     $scope.toggleMin = function() {
       $scope.minDate = $scope.minDate ? null : new Date();
     };
+
     $scope.toggleMin();
+    $scope.maxDate = new Date(2020, 5, 22);
 
-    $scope.open = function($event) {
-      $event.preventDefault();
-      $event.stopPropagation();
+    $scope.open1 = function() {
+      $scope.popup1.opened = true;
+    };
 
-      $scope.opened = true;
+    $scope.open2 = function() {
+      $scope.popup2.opened = true;
+    };
+
+    $scope.setDate = function(year, month, day) {
+      $scope.dt = new Date(year, month, day);
     };
 
     $scope.dateOptions = {
       formatYear: 'yy',
-      startingDay: 1,
-      class: 'datepicker'
+      startingDay: 1
     };
 
-    $scope.initDate = new Date('2016-15-20');
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[0];
-  }])
-  ; 
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup1 = {
+      opened: false
+    };
+
+    $scope.popup2 = {
+      opened: false
+    };
+
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var afterTomorrow = new Date();
+    afterTomorrow.setDate(tomorrow.getDate() + 1);
+    $scope.events =
+      [
+        {
+          date: tomorrow,
+          status: 'full'
+        },
+        {
+          date: afterTomorrow,
+          status: 'partially'
+        }
+      ];
+
+    $scope.getDayClass = function(date, mode) {
+      if (mode === 'day') {
+        var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+        for (var i = 0; i < $scope.events.length; i++) {
+          var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+          if (dayToCheck === currentDay) {
+            return $scope.events[i].status;
+          }
+        }
+      }
+
+      return '';
+    };
+  });
+  // app.controller('DatepickerDemoCtrl', ['$scope', function($scope) {
+  //   $scope.today = function() {
+  //     $scope.dt = new Date();
+  //   };
+  //   $scope.today();
+
+  //   $scope.clear = function () {
+  //     $scope.dt = null;
+  //   };
+
+  //   // Disable weekend selection
+  //   $scope.disabled = function(date, mode) {
+  //     return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  //   };
+
+  //   $scope.toggleMin = function() {
+  //     $scope.minDate = $scope.minDate ? null : new Date();
+  //   };
+  //   $scope.toggleMin();
+
+  //   $scope.open = function($event) {
+  //     $event.preventDefault();
+  //     $event.stopPropagation();
+
+  //     $scope.opened = true;
+  //   };
+
+  //   $scope.dateOptions = {
+  //     formatYear: 'yy',
+  //     startingDay: 1,
+  //     class: 'datepicker'
+  //   };
+
+  //   $scope.initDate = new Date('2016-15-20');
+  //   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  //   $scope.format = $scope.formats[0];
+  // }])
+  // ; 
   app.controller('TimepickerDemoCtrl', ['$scope', function($scope) {
     $scope.mytime = new Date();
 

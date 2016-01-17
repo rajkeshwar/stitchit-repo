@@ -1,0 +1,32 @@
+<div class="wrapper-md index">
+  <div class="row">
+    <!-- carousel -->     
+    <div class="col-sm-9">
+      <div ng-controller="CarouselDemoCtrl" class="panel">
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+          <uib-slide ng-repeat="slide in slides" active="slide.active" index="slide.id">
+            <img ng-src="{{slide.image}}" class="img-full">
+            <div class="carousel-caption">
+              <h4>Slide {{$index}}</h4> 
+              <p>{{slide.text}}</p>
+            </div>
+          </uib-slide>
+        </uib-carousel>    
+      </div>
+      <!-- / carousel --> 
+      <!-- front-neck-selection -->
+      <div class="panel owl-c" ng-repeat="category in indexItems"> 
+        <div class="panel-heading no-border bg-info slide">{{category.label}}</div>
+        <owl-carousel data-options="{autoPlay: 3000, items: 4, itemsDesktop:[1199,3], itemsDesktopSmall:[979,3], itemsMobile : [479,2], responsiveClass:true, pagination:false, responsive:{0:{'items':2},480:{'items':3},768:{'items':5}}}">  
+
+          <div owl-carousel-item="" ng-repeat="eachItem in category.slides"> 
+            <div class="item mr">
+              <img ng-click="chooseStyle(eachItem, category.slides)" ng-src="{{eachItem}}"/>
+            </div>
+          </div>
+        </owl-carousel>   
+      </div>
+      <!-- /front-neck-selection -->  
+    </div>           
+  </div>
+</div>

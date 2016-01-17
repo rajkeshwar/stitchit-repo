@@ -2,54 +2,69 @@
   <h1 class="m-n font-thin h3">Patiala Salwar <!-- <span class="badge">16</span> --></h1>
   <small class="text-muted">Customized style</small>
 </div>
-<div class="wrapper-md">
+<div class="wrapper-md" ng-controller="LoginModalCtrl">
   <div class="row">
-    <div class="col-lg-8"> 
-      <div class="panel panel-default">
-        <div class="panel-heading font-bold">Measurements</div>                  
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-6"><strong>Item name</strong></div>
-            <div class="col-lg-6"><b>:</b> {{cnf.itemName}}</div>
-            <div class="col-lg-6"><strong>Description</strong></div>
-            <div class="col-lg-6"><b>:</b> {{cnf.itemDescription}}</div>
-            <div class="col-lg-6"><strong>Item Id</strong></div>
-            <div class="col-lg-6"><b>:</b> {{cnf.itemId}}</div> 
-            <br/>
-            <div ng-repeat="item in cnf.measures">
-              <div class="col-lg-6"><strong>{{item.key}}</strong></div>
-              <div class="col-lg-6"><b>:</b> {{item.value}} inches</div>
-            </div>
-          </div>
-            <!-- <pre>{{cnf | json}}</pre>  -->    
-        </div>         
-      </div>
+    <div class="col-lg-7"> 
+      <table class="table table-border bg-white-only b-a">
+        <tbody>
+          <tr class="bg-light lt">
+            <td colspan="2">Product info</td>
+          </tr>
+          <tr>
+            <td><strong>Item name</strong></td>
+            <td>{{cnf.itemName}}</td>
+          </tr>
+          <tr>
+            <td><strong>Description</strong></td>
+            <td>{{cnf.itemDescription}}</td>
+          </tr>
+          <tr>
+            <td><strong>Item Id</strong></td>
+            <td>{{cnf.itemId}}</td>
+          </tr>
+          <tr class="bg-light lt">
+            <td colspan="2">Measurements</td>
+          </tr>
+          <tr ng-repeat="item in cnf.measures">
+            <td><strong>{{item.key}}</strong></td>
+            <td>{{item.value}} " (inches)</td>
+          </tr>
+        </tbody>
+      </table>
 
       <!-- item images start -->
-      <div class="row">
-        <div class="col-lg-4">
-          <img ng-src="ext-imgs/fneck/1.jpg"/>
-          <label>Front Neck</label>
-        </div>
-        <div class="col-lg-4">
+      <div class="row" ng-init="items=['fneck/1.jpg','bneck/1.jpg','sleeve/1 (3).jpg']">
+        <!-- <div class="col-lg-12">
+          <img ng-src="ext-imgs/fneck/1.jpg"/>  
           <img ng-src="ext-imgs/bneck/1.jpg"/>
-          <label>Back Neck</label>
-        </div>
-        <div class="col-lg-4">
-          <img ng-src="ext-imgs/sleeve/1 (3).jpg"/>
-          <label>Sleeve Style</label>
+          <img ng-src="ext-imgs/sleeve/1 (3).jpg"/> 
+        </div> -->
+        <div class="col-sm-4" ng-repeat="itm in items">
+          <div class="panel b-a img-p">
+            <div class="panel-heading no-border bg-primary">          
+              <span class="text-lt">Front neck</span>
+            </div>
+            <div class="item m-l-n-xxs m-r-n-xxs img-c">
+              <img ng-src="ext-imgs/{{itm}}"/>
+            </div>
+            <div class="hbox text-center b-b b-light text-sm">          
+              <!-- <a href="" class="col padder-v text-muted b-r b-light">
+                <i class="icon-call-end block m-b-xs fa-2x"></i>
+                <span>Front neck</span>
+              </a> -->
+            </div>
+          </div>
         </div>
       </div>
       <h1></h1>
       <!-- /sleeve-style-selection -->
       <div class="btn-group btn-group-justified">
         <label class="btn btn-primary" ng-click="addToCart()">Add to Cart</label>
-        <label class="btn btn-default" ng-click="backToCustomize()">Customize</label>            
+        <label class="btn btn-default" ng-click="backToCustomize()">Customize</label>
       </div> 
-      <br/>
       <!-- proceed to next button -->      
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <!-- progressbar -->
       <div ng-controller="ProgressDemoCtrl" class="panel panel-default">
         <div class="panel-heading">
@@ -67,3 +82,4 @@
     </div>
   </div>
 </div>
+<!-- login and register popup -->
