@@ -17,11 +17,28 @@
       <!-- front-neck-selection -->
       <div class="panel owl-c" ng-repeat="category in indexItems"> 
         <div class="panel-heading no-border bg-info slide">{{category.label}}</div>
-        <owl-carousel data-options="{autoPlay: 3000, items: 4, itemsDesktop:[1199,3], itemsDesktopSmall:[979,3], itemsMobile : [479,2], responsiveClass:true, pagination:false, responsive:{0:{'items':2},480:{'items':3},768:{'items':5}}}">  
+        <owl-carousel hover-view-details="true" data-options="{autoPlay: 3000, items: 4, itemsDesktop:[1199,3], itemsDesktopSmall:[979,3], itemsMobile : [479,2], responsiveClass:true, pagination:false, responsive:{0:{'items':2},480:{'items':3},768:{'items':5}}}">  
 
           <div owl-carousel-item="" ng-repeat="eachItem in category.slides"> 
             <div class="item mr">
-              <img ng-click="chooseStyle(eachItem, category.slides)" ng-src="{{eachItem}}"/>
+              <div class="panel b-a img-p p-m-b">
+                <div class="item m-l-n-xxs m-r-n-xxs img-c">
+                  <div class="bottom wrapper bg-gd-dk text-white a-w">            
+                    <a ng-click="viewDetails(eachItem)" 
+                      class="btn btn-xs btn-primary vw-dl">View details</a>
+                    <div class="avl-size">
+                      Sizes: 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66
+                    </div>
+                  </div>
+                  <img ng-src="{{eachItem}}"/>
+                </div>
+                <div class="hbox text-center b-b b-light text-sm">          
+                  <a href="" class="col padder-v text-muted b-r b-light">
+                    <!-- <i class="icon-call-end block m-b-xs fa-2x"></i> -->
+                    <span>Light Peach Faux Georgette Readymade Lehen...</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </owl-carousel>   

@@ -11,6 +11,8 @@ app.directive("owlCarousel", function($timeout) {
         var defaultOptions = {
         };
         var customOptions = scope.$eval($(element).attr('data-options'));
+        var hoverViewDetails = scope.$eval($(element).attr('hover-view-details'));
+
         // combine the two options objects
         for(var key in customOptions) {
           defaultOptions[key] = customOptions[key];
@@ -18,16 +20,18 @@ app.directive("owlCarousel", function($timeout) {
         // init carousel
         $(element).owlCarousel(defaultOptions);
 
-        // $(element).find('.owl-item').css('width', 'initial');
-        // $(element).find('.owl-item').each(function(){
-        //   var _$element = $(this);
-        //   $timeout(function(){
-        //      var width = _$element.find('img').width();
-        //     console.log('width ', width);
-        //     _$element.css('width', width + 'px');
-        //   }, 1000);
-         
-        // });
+        if (hoverViewDetails) {
+
+          var $viewDetails, $avlSize;
+          $(element).find('.item').hover(function(){
+            $viewDetails = $(this).find('.vw-dl').css('visibility', 'visible');
+            $avlSize = $(this).find('.avl-size').css('visibility', 'visible');
+          }, function(){
+            $viewDetails.css('visibility', 'hidden');
+            $avlSize.css('visibility', 'hidden');
+          });
+          
+        };
 
         $(element).find('img').click(function(){
           $(element).find('.item').removeClass('active-item');

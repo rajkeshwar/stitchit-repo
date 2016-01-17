@@ -6,18 +6,18 @@ app.config(['$stateProvider', 'JQ_CONFIG',
   function ( $stateProvider,   JQ_CONFIG) {
 
     $stateProvider
-        .state('app.index', {
-          url: '/index',
-          templateUrl: 'js/app/index/index-tpl.html',
-          controller: 'IndexCtrl',
-          params: {msr:'null'}
-        })
-        .state('app.item', {
-          url:'/item',
-          templateUrl: 'js/app/index/item-tpl.html',
-          controller: 'ItemCtrl',
-          params: {inv:'null'}
-        });
+      .state('app.index', {
+        url: '/index',
+        templateUrl: 'js/app/index/index-tpl.html',
+        controller: 'IndexCtrl',
+        params: {msr:'null'}
+      })
+      .state('app.viewDerails', {
+        url:'/details',
+        templateUrl: 'js/app/index/view-details-tpl.html',
+        controller: 'ItemDetailsCtrl',
+        params: {activeItem:'null'}
+      });
   }
 ]);
 
@@ -50,18 +50,18 @@ app.controller('IndexCtrl',
     $scope.indexItems.push({'label': 'Salwar Kameez', 'slides':salwarKameez});
     $scope.indexItems.push({'label': 'Lahenga Choli', 'slides':ghagraCholis});
 
-    $scope.chooseStyle = function( item, slide ){
-      console.log('Item choosed ', item);
-      slide.label = item.label;
+    $scope.viewDetails = function( activeItem ){
+      console.log('You clicked viewDetails ', activeItem);
+      $state.go('^.viewDerails', {activeItem:activeItem});
     };
   }
 ]);
 
-app.controller('ItemCtrl', 
-  [        '$scope','$uibModal','$log','$rootScope',
-  function ($scope,  $uibModal,  $log,  $rootScope) {
+app.controller('ItemDetailsCtrl', 
+  [        '$scope','$uibModal','$log','$state',
+  function ($scope,  $uibModal,  $log,  $state) {
 
     console.log('ItemCtrl is called');
-  
+    $scope.activeItem = $state.params.activeItem;
   }
 ]);
