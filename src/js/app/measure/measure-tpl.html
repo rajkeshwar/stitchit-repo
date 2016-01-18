@@ -49,8 +49,33 @@
         </div>         
       </div>
 
+      <div class="panel owl-c" ng-repeat="slide in msr.imgSliders"> 
+        <div class="panel-heading no-border bg-info slide-c">{{slide.label}}</div>
+        <owl-carousel click-select="true" data-options="{autoPlay: 3000, items: 4, itemsDesktop:[1199,3], itemsDesktopSmall:[979,3], itemsMobile : [479,2], responsiveClass:true, pagination:false, responsive:{0:{'items':2},480:{'items':3},768:{'items':5}}}">  
+
+          <div owl-carousel-item="" ng-repeat="sl in slide.slides">      
+            <div class="item mr">
+              <div class="panel b-a img-p p-m-b">
+                <span class="checkmark">
+                  <div class="checkmark_circle"></div>
+                  <div class="checkmark_stem"></div>
+                  <div class="checkmark_kick"></div>
+                </span>
+                <div class="item m-l-n-xxs m-r-n-xxs img-c">                  
+                  <img ng-click="chooseStyle(sl, slide)" ng-src="{{sl.imgSrc}}"/>
+                </div>
+                <div class="hbox text-center b-b b-light text-sm">          
+                  <a href="" class="col padder-c text-muted b-r b-light">
+                    <span>Light Peach </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </owl-carousel>   
+      </div> 
       <!-- front-neck-selection -->
-      <div class="panel b-a" ng-repeat="slide in msr.imgSliders">
+      <!-- <div class="panel b-a" ng-repeat="slide in msr.imgSliders">
         <div class="panel-heading no-border bg-info">{{slide.label}}</div>
         <owl-carousel data-options="{autoPlay: 3000, items: 5, itemsDesktop:[1199,3], itemsDesktopSmall:[979,3], itemsMobile : [479,2], responsiveClass:true, pagination:false, responsive:{0:{'items':2},480:{'items':3},768:{'items':5}}}">  
 

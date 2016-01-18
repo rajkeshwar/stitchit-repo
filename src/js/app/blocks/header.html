@@ -31,12 +31,12 @@
 
         <!-- link and dropdown -->
         <ul class="nav navbar-nav hidden-sm">
-          <li class="dropdown pos-stc" dropdown>
-            <a href class="dropdown-toggle" dropdown-toggle>
+          <li class="dropdown pos-stc" uib-dropdown>
+            <a href class="dropdown-toggle" uib-dropdown-toggle>
               <span>Mega</span> 
               <span class="caret"></span>
             </a>
-            <div class="dropdown-menu wrapper w-full bg-white">
+            <div uib-dropdown-menu class="dropdown-menu wrapper w-full bg-white">
               <div class="row">
                 <div class="col-sm-4">
                   <div class="m-l-xs m-t-xs m-b-xs font-bold">Pages <span class="badge badge-sm bg-success">10</span></div>
@@ -134,12 +134,12 @@
               </div>
             </div>
           </li>
-          <li class="dropdown" dropdown>
-            <a href class="dropdown-toggle" dropdown-toggle>
+          <li class="dropdown" uib-dropdown>
+            <a href class="dropdown-toggle" uib-dropdown-toggle>
               <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
               <span translate="header.navbar.new.NEW">New</span> <span class="caret"></span>
             </a>
-            <ul class="dropdown-menu" role="menu">
+            <ul uib-dropdown-menu class="dropdown-menu" role="menu">
               <li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
               <li>
                 <a href>
@@ -175,12 +175,12 @@
 
         <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown hidden-sm" is-open="lang.isopen" dropdown>
-            <a href class="dropdown-toggle" dropdown-toggle>
+          <li class="dropdown hidden-sm" is-open="lang.isopen" uib-dropdown>
+            <a href class="dropdown-toggle" uib-dropdown-toggle>
               {{selectLang}} <b class="caret"></b>
             </a>
             <!-- dropdown -->
-            <ul class="dropdown-menu animated fadeInRight w">
+            <ul uib-dropdown-menu class="dropdown-menu animated fadeInRight w">
               <li ng-repeat="(langKey, label) in langs">
                 <a ng-click="setLang(langKey, $event)" href>{{label}}</a>
               </li>
@@ -190,14 +190,14 @@
           <li class="hidden-xs">
             <a ui-fullscreen></a>
           </li>
-          <li class="dropdown" dropdown>
-            <a href class="dropdown-toggle" dropdown-toggle>
+          <li class="dropdown" uib-dropdown>
+            <a href class="dropdown-toggle" uib-dropdown-toggle>
               <i class="icon-bell fa-fw"></i>
               <span class="visible-xs-inline">Notifications</span>
               <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
             </a>
             <!-- dropdown -->
-            <div class="dropdown-menu w-xl animated">
+            <div uib-dropdown-menu class="dropdown-menu w-xl animated">
               <div class="panel bg-white">
                 <div class="panel-heading b-light bg-light">
                   <strong>You have <span>2</span> notifications</strong>
@@ -227,8 +227,8 @@
             </div>
             <!-- / dropdown -->
           </li>
-          <li class="dropdown" dropdown>
-            <a href class="dropdown-toggle clear" dropdown-toggle>
+          <li class="dropdown" uib-dropdown>
+            <a href class="dropdown-toggle clear" uib-dropdown-toggle>
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                 <img src="img/a0.jpg" alt="...">
                 <i class="on md b-white bottom"></i>
@@ -236,12 +236,12 @@
               <span class="hidden-sm hidden-md">Rajkeshwar</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
-            <ul class="dropdown-menu animated w">
+            <ul uib-dropdown-menu class="dropdown-menu animated w">
               <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
                 <div>
                   <p>300mb of 512mb used</p>
                 </div>
-                <progressbar value="60" class="progress-xs m-b-none bg-white"></progressbar>
+                <uib-progressbar value="60" class="progress-xs m-b-none bg-white"></uib-progressbar>
               </li>
               <li>
                 <a href>

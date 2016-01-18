@@ -12,6 +12,7 @@ app.directive("owlCarousel", function($timeout) {
         };
         var customOptions = scope.$eval($(element).attr('data-options'));
         var hoverViewDetails = scope.$eval($(element).attr('hover-view-details'));
+        var clickSelect = scope.$eval($(element).attr('click-select'));
 
         // combine the two options objects
         for(var key in customOptions) {
@@ -33,10 +34,12 @@ app.directive("owlCarousel", function($timeout) {
           
         };
 
-        $(element).find('img').click(function(){
-          $(element).find('.item').removeClass('active-item');
-          $(this).parent().toggleClass('active-item');
-        });
+        if (clickSelect) {
+          $(element).find('.item').click(function(){
+            $(element).find('.checkmark').removeClass('active');
+            $(this).find('.checkmark').toggleClass('active');
+          });
+        }        
       };
     }
   };
