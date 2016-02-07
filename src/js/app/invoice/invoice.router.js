@@ -26,5 +26,9 @@ app.controller('InvoiceCtrl',
       $state.go('^.index', {inv:'continueShopping'});
     }
 
+    $scope.timeline = function(orderId){
+      console.log('timeline is called');
+      $state.go('^.timeline', {orderId:orderId});
+    }
   }
 ]);

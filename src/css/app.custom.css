@@ -37,6 +37,9 @@ button.badge {
 }
 
 /*Modal custom css*/
+.modal-content {
+	border: none;
+}
 .modal-header h3 {
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -114,20 +117,20 @@ a.login {
 
 	.checkmark_stem {
 	  position: absolute;
-	  width:3px;
-	  height:9px;
-	  background-color:#fff;
-	  left:11px;
-	  top:6px;
+    width: 3px;
+    height: 12px;
+    background-color: #fff;
+    left: 11px;
+    top: 4px;
 	}
 
 	.checkmark_kick {
 	  position: absolute;
-	  width:3px;
-	  height:3px;
-	  background-color:#fff;
-	  left:8px;
-	  top:12px;
+    width: 7px;
+    height: 3px;
+    background-color: #fff;
+    left: 6px;
+    top: 13px;
 	}
 }
 
@@ -304,3 +307,30 @@ img.view-details {
 .checkmark.active .checkmark_circle {
   background-color: green;
 }
+.hover:hover {
+	cursor: pointer;
+}
+
+/*View details page*/
+.price {
+  text-align: right;
+  font-size: 26px;
+  color: #ff7201;
+  width: 140px;
+  margin-bottom: 3px;
+}
+/*.nav-tabs > .uib-tab.active > div {
+	padding: 10px 15px;
+	border-color: #eee #eee #ddd;
+}
+.nav-tabs > .uib-tab > div {
+	padding: 8px 15px;
+	border-color: #ddd #ddd transparent #ddd;
+}
+.uib-tab > div {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  outline: 0;
+  color: #337ab7;
+}*/

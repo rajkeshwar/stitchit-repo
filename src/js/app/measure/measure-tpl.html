@@ -16,7 +16,7 @@
 
       <br/>
       <div class="panel panel-default">
-        <div class="panel-heading font-bold">Measurements</div>                   
+        <div class="panel-heading font-bold">Measurements</div>                    
         <div class="panel-body">
           <form role="form" ng-model="stcform">  
             <div class="form-group" data-ng-repeat="sizeItem in msr.measurements" stc-slider-each>  
@@ -24,8 +24,8 @@
               <button uib-popover-template="'measure-template.html'" style=""
                       popover-trigger="focus" class="badge bg-info"   
                       popover-placement="right">?</button>    
-              <label><strong>{{sizeItem.key}}</strong></label>
-              <script type="text/ng-template" id="measure-template.html">             
+              <label><strong>{{sizeItem.key}}</strong></label> 
+              <script type="text/ng-template" id="measure-template.html">               
                 <div class="panel">
                   <div class="panel-heading no-border bg-primary">          
                     <span class="text-lt" style="color:black;">{{sizeItem.key}}</span> 
@@ -40,7 +40,7 @@
                 </div>                
               </script>
               <br/>
-              <div stc-slider ng-model="sizeItem.size">
+              <div stc-slider ng-model="sizeItem.size" c>
                 <input class="stc-slider-slr tip fill" type="range" min=5 max=60 step=0.5>
                 <input type="text" class="form-control stc-slider-val">
               </div>          
@@ -50,8 +50,8 @@
       </div>
 
       <div class="panel owl-c" ng-repeat="slide in msr.imgSliders"> 
-        <div class="panel-heading no-border bg-info slide-c">{{slide.label}}</div>
-        <owl-carousel click-select="true" data-options="{autoPlay: 3000, items: 4, itemsDesktop:[1199,3], itemsDesktopSmall:[979,3], itemsMobile : [479,2], responsiveClass:true, pagination:false, responsive:{0:{'items':2},480:{'items':3},768:{'items':5}}}">  
+        <div class="panel-heading no-border bg-info slide-c">{{slide.label}}</div>  
+        <owl-carousel click-select="true" data-options="{autoPlay: 3000, items: 4,  itemsDesktop:[1199,3], itemsDesktopSmall:[979,3], itemsMobile : [479,2], responsiveClass:true, pagination:false, responsive:{0:{'items':2},480:{'items':3},768:{'items':5}}}">  
 
           <div owl-carousel-item="" ng-repeat="sl in slide.slides">      
             <div class="item mr">

@@ -73,9 +73,10 @@ app.directive('stcSlider', ['$timeout', function($timeout) {
         $timeout(updateSliderValue, 0);      
       });
 
-      el.find('input').on('change input mousemove', function(){
-        ngModel.$setViewValue(this.value);
-      });
+      el.find('input')
+        .on('change input mousemove', function(){
+          ngModel.$setViewValue(this.value);
+        });
 
       ngModel.$render = function() {
         $timeout(updateSliderValue, 0);
@@ -87,6 +88,14 @@ app.directive('stcSlider', ['$timeout', function($timeout) {
     }
   };
 }]);
+
+// $('input[type="range"]').on('mouseup', function() {
+//   this.blur();
+// }).on('mousedown input', function() {
+//   styl.inject('input[type=range]:focus::-webkit-slider-thumb:after, input[type=range]:focus::-ms-thumb:after, input[type=range]:focus::-moz-range-thumb:after', {
+//     content: "'" + this.value + "'"
+//   }).apply();
+// });
 
 function stylishRangeSlider(){
   var range_els = document.querySelectorAll('input[type=range]'), 

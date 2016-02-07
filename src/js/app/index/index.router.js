@@ -11,12 +11,6 @@ app.config(['$stateProvider', 'JQ_CONFIG',
         templateUrl: 'js/app/index/index-tpl.html',
         controller: 'IndexCtrl',
         params: {msr:'null'}
-      })
-      .state('app.viewDerails', {
-        url:'/details',
-        templateUrl: 'js/app/index/view-details-tpl.html',
-        controller: 'ItemDetailsCtrl',
-        params: {activeItem:'null'}
       });
   }
 ]);
@@ -54,14 +48,5 @@ app.controller('IndexCtrl',
       console.log('You clicked viewDetails ', activeItem);
       $state.go('^.viewDerails', {activeItem:activeItem});
     };
-  }
-]);
-
-app.controller('ItemDetailsCtrl', 
-  [        '$scope','$uibModal','$log','$state',
-  function ($scope,  $uibModal,  $log,  $state) {
-
-    console.log('ItemCtrl is called');
-    $scope.activeItem = $state.params.activeItem;
   }
 ]);

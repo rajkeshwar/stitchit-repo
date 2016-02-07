@@ -58,124 +58,124 @@ angular.module('app')
           debug:  true,
           events: true,
           modules: [
-              {
-                  name: 'ngGrid',
-                  files: [
-                      '../shared-jslibs/ng-grid/build/ng-grid.js',
-                      '../shared-jslibs/ng-grid/ng-grid.css',
-                      '../shared-jslibs/ng-grid/ng-grid.bootstrap.css'
-                  ]
-              },
-              {
-                  name: 'ui.grid',
-                  files: [
-                      '../shared-jslibs/angular-ui-grid/ui-grid.js',
-                      '../shared-jslibs/angular-ui-grid/ui-grid.css',
-                      '../shared-jslibs/angular-ui-grid/ui-grid.bootstrap.css'
-                  ]
-              },
-              {
-                  name: 'ui.select',
-                  files: [
-                      '../shared-jslibs/angular-ui-select/dist/select.js',
-                      '../shared-jslibs/angular-ui-select/dist/select.css'
-                  ]
-              },
-              {
-                  name:'angularFileUpload',
-                  files: [
-                    '../shared-jslibs/angular-file-upload/angular-file-upload.js'
-                  ]
-              },
-              {
-                  name:'ui.calendar',
-                  files: ['../shared-jslibs/angular-ui-calendar/src/calendar.js']
-              },
-              {
-                  name: 'ngImgCrop',
-                  files: [
-                      '../shared-jslibs/ngImgCrop/compile/minified/ng-img-crop.js',
-                      '../shared-jslibs/ngImgCrop/compile/minified/ng-img-crop.css'
-                  ]
-              },
-              {
-                  name: 'angularBootstrapNavTree',
-                  files: [
-                      '../shared-jslibs/angular-bootstrap-nav-tree/dist/abn_tree_directive.js',
-                      '../shared-jslibs/angular-bootstrap-nav-tree/dist/abn_tree.css'
-                  ]
-              },
-              {
-                  name: 'toaster',
-                  files: [
-                      '../shared-jslibs/angularjs-toaster/toaster.js',
-                      '../shared-jslibs/angularjs-toaster/toaster.css'
-                  ]
-              },
-              {
-                  name: 'textAngular',
-                  files: [
-                      '../shared-jslibs/textAngular/src/textAngular-sanitize.js',
-                      '../shared-jslibs/textAngular/src/textAngular.js',
-                      '../shared-jslibs/textAngular/src/textAngularSetup.js'
-                  ]
-              },
-              {
-                  name: 'vr.directives.slider',
-                  files: [
-                      '../shared-jslibs/venturocket-angular-slider/build/angular-slider.js',
-                      '../shared-jslibs/venturocket-angular-slider/build/angular-slider.css'
-                  ]
-              },
-              {
-                  name: 'com.2fdevs.videogular',
-                  files: [
-                      '../shared-jslibs/videogular/videogular.min.js'
-                  ]
-              },
-              {
-                  name: 'com.2fdevs.videogular.plugins.controls',
-                  files: [
-                      '../shared-jslibs/videogular-controls/controls.min.js'
-                  ]
-              },
-              {
-                  name: 'com.2fdevs.videogular.plugins.buffering',
-                  files: [
-                      '../shared-jslibs/videogular-buffering/buffering.min.js'
-                  ]
-              },
-              {
-                  name: 'com.2fdevs.videogular.plugins.overlayplay',
-                  files: [
-                      '../shared-jslibs/videogular-overlay-play/overlay-play.min.js'
-                  ]
-              },
-              {
-                  name: 'com.2fdevs.videogular.plugins.poster',
-                  files: [
-                      '../shared-jslibs/videogular-poster/poster.min.js'
-                  ]
-              },
-              {
-                  name: 'com.2fdevs.videogular.plugins.imaads',
-                  files: [
-                      '../shared-jslibs/videogular-ima-ads/ima-ads.min.js'
-                  ]
-              },
-              {
-                  name: 'xeditable',
-                  files: [
-                      '../shared-jslibs/angular-xeditable/dist/js/xeditable.js',
-                      '../shared-jslibs/angular-xeditable/dist/css/xeditable.css'
-                  ]
-              },
-              {
-                  name: 'smart-table',
-                  files: [
-                      '../shared-jslibs/angular-smart-table/dist/smart-table.min.js'
-                  ]
-              }
+            {
+                name: 'ngGrid',
+                files: [
+                    '../shared-jslibs/ng-grid/build/ng-grid.js',
+                    '../shared-jslibs/ng-grid/ng-grid.css',
+                    '../shared-jslibs/ng-grid/ng-grid.bootstrap.css'
+                ]
+            },
+            {
+                name: 'ui.grid',
+                files: [
+                    '../shared-jslibs/angular-ui-grid/ui-grid.js',
+                    '../shared-jslibs/angular-ui-grid/ui-grid.css',
+                    '../shared-jslibs/angular-ui-grid/ui-grid.bootstrap.css'
+                ]
+            },
+            {
+                name: 'ui.select',
+                files: [
+                    '../shared-jslibs/angular-ui-select/dist/select.js',
+                    '../shared-jslibs/angular-ui-select/dist/select.css'
+                ]
+            },
+            {
+                name:'angularFileUpload',
+                files: [
+                  '../shared-jslibs/angular-file-upload/angular-file-upload.js'
+                ]
+            },
+            {
+                name:'ui.calendar',
+                files: ['../shared-jslibs/angular-ui-calendar/src/calendar.js']
+            },
+            {
+                name: 'ngImgCrop',
+                files: [
+                    '../shared-jslibs/ngImgCrop/compile/minified/ng-img-crop.js',
+                    '../shared-jslibs/ngImgCrop/compile/minified/ng-img-crop.css'
+                ]
+            },
+            {
+                name: 'angularBootstrapNavTree',
+                files: [
+                    '../shared-jslibs/angular-bootstrap-nav-tree/dist/abn_tree_directive.js',
+                    '../shared-jslibs/angular-bootstrap-nav-tree/dist/abn_tree.css'
+                ]
+            },
+            {
+                name: 'toaster',
+                files: [
+                    '../shared-jslibs/angularjs-toaster/toaster.js',
+                    '../shared-jslibs/angularjs-toaster/toaster.css'
+                ]
+            },
+            {
+                name: 'textAngular',
+                files: [
+                    '../shared-jslibs/textAngular/src/textAngular-sanitize.js',
+                    '../shared-jslibs/textAngular/src/textAngular.js',
+                    '../shared-jslibs/textAngular/src/textAngularSetup.js'
+                ]
+            },
+            {
+                name: 'vr.directives.slider',
+                files: [
+                    '../shared-jslibs/venturocket-angular-slider/build/angular-slider.js',
+                    '../shared-jslibs/venturocket-angular-slider/build/angular-slider.css'
+                ]
+            },
+            {
+                name: 'com.2fdevs.videogular',
+                files: [
+                    '../shared-jslibs/videogular/videogular.min.js'
+                ]
+            },
+            {
+                name: 'com.2fdevs.videogular.plugins.controls',
+                files: [
+                    '../shared-jslibs/videogular-controls/controls.min.js'
+                ]
+            },
+            {
+                name: 'com.2fdevs.videogular.plugins.buffering',
+                files: [
+                    '../shared-jslibs/videogular-buffering/buffering.min.js'
+                ]
+            },
+            {
+                name: 'com.2fdevs.videogular.plugins.overlayplay',
+                files: [
+                    '../shared-jslibs/videogular-overlay-play/overlay-play.min.js'
+                ]
+            },
+            {
+                name: 'com.2fdevs.videogular.plugins.poster',
+                files: [
+                    '../shared-jslibs/videogular-poster/poster.min.js'
+                ]
+            },
+            {
+                name: 'com.2fdevs.videogular.plugins.imaads',
+                files: [
+                    '../shared-jslibs/videogular-ima-ads/ima-ads.min.js'
+                ]
+            },
+            {
+                name: 'xeditable',
+                files: [
+                    '../shared-jslibs/angular-xeditable/dist/js/xeditable.js',
+                    '../shared-jslibs/angular-xeditable/dist/css/xeditable.css'
+                ]
+            },
+            {
+                name: 'smart-table',
+                files: [
+                    '../shared-jslibs/angular-smart-table/dist/smart-table.min.js'
+                ]
+            }
           ]
       });
   }])
