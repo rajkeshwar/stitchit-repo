@@ -1,0 +1,63 @@
+<div class="wrapper-md">
+  <div class="row">
+  	<div class="col-sm-4">
+      <!-- <div class="panel b-a">
+        <div class="item m-l-n-xxs m-r-n-xxs">          
+          <div class="bottom wrapper bg-gd-dk text-white">            
+            <div class="text-u-c h3 m-b-sm text-primary-lter">Coffee</div>
+            <div>Restaurant</div>
+            <div>9:00 am - 12:00 pm</div>
+          </div>
+          <img ng-src="{{activeItem}}">  
+        </div>
+      </div> -->
+      <img ng-src="{{activeItem}}" class="view-details">   
+    </div>
+    <div class="col-sm-8 view-details">
+      <div class="row hbox">
+        <div class="col-md-8 col">
+          <h1 class="font-normal h3 text-black m-b">Dark Beige and Blue Dupion Silk and Cotton Silk Readymade Blouse</h1>
+          <p>Dark beige and blue dupion silk and cotton silk readymade padded blouse designed with dangles and patch border work. Complete your look with matching saree and you are sure to get that attention. Cotton is used as lining of the blouse. (Slight color variation is possible.)</p>
+        
+        </div>
+        <div class="col-md-4 col">
+          <div class="price">
+            <span class="text-lt">
+              <i class="fa fa-inr"></i> 1780.00      
+            </span>  
+          </div>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg pull-in"></div> 
+      <h4>Choose size</h4>
+      <div>      
+        
+        <uib-pagination direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages" class="m-t-none m-b"></uib-pagination>
+        <div>
+          <span class="m-r">Selected size: <strong>{{currentPage}}</strong></span>
+        </div>
+        
+    </div>   
+  </div>
+  
+</div>
+  <div class="row m-t-xl">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <uib-tabset class="tab-container">
+        <uib-tab heading="Static title">Static content</uib-tab>
+        <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" 
+              active="tab.active" disable="tab.disabled">
+          {{tab.content}}
+        </uib-tab>
+        <uib-tab select="alertMe()">
+          <uib-tab-heading>
+            <i class="glyphicon glyphicon-bell"></i> Alert!
+          </uib-tab-heading>
+          I've got an HTML heading, and a select callback. Pretty cool!
+        </uib-tab>
+      </uib-tabset>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>  
+</div>
